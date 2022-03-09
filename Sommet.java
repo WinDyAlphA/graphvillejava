@@ -7,13 +7,12 @@ class Sommet {
     public static int nbreInstancesV = 0;
     public static int nbreInstancesL = 0;
     public static int nbreInstancesR = 0;
-
-
+    public int compteur;
+    public ArrayList < Routes > voisin = new ArrayList < Routes > ();
 
 	public Sommet (char typeN , String nom) {
         this.typeN = typeN;
         this.nom = nom;
-        nbreInstances++;
         if (typeN == 'V'){ //compte le nb de ville 
             nbreInstancesV++;
         }
@@ -23,6 +22,8 @@ class Sommet {
         if (typeN == 'R'){ //compte le nb de resteaurants
             nbreInstancesR++;
         }
+        this.compteur = nbreInstances;
+        nbreInstances++;
 	}
 
     public char getTypeN() {
@@ -30,6 +31,9 @@ class Sommet {
     }
     public String getNom() {
         return this.nom;
+    }
+    public int getCompteur(){
+        return this.compteur;
     }
     public int getNbreInstances() {
         return this.nbreInstances;

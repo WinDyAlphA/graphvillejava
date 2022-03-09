@@ -69,8 +69,8 @@ class Routes {
 
     public String toString() {
     	return " : Type : " + this.typeN +
-        "\n : som1 : \n" + this.som1.getNom() +
-        "\n : som2 : \n" + this.som2.getNom() +
+        "\n : Sommet 1 : \n\t" + this.som1.getNom() +
+        "\n : Sommet 2 : \n\t" + this.som2.getNom() +
         "\n : distance : " + this.distance;
 	}
 }

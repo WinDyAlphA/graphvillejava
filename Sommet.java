@@ -8,7 +8,8 @@ class Sommet {
     public static int nbreInstancesL = 0;
     public static int nbreInstancesR = 0;
     public int compteur;
-    public ArrayList < Routes > voisin = new ArrayList < Routes > ();
+    public ArrayList<Routes> adj  = new ArrayList<Routes>();
+    
 
 	public Sommet (char typeN , String nom) {
         this.typeN = typeN;
@@ -32,6 +33,15 @@ class Sommet {
     public String getNom() {
         return this.nom;
     }
+    public Routes getRoute(int i) {
+        return this.adj.get(i);
+    }
+    public ArrayList<Routes> getRoute() {
+        return this.adj;
+    }
+    public int getRouteSize() {
+        return this.adj.size();
+    }
     public int getCompteur(){
         return this.compteur;
     }
@@ -53,6 +63,9 @@ class Sommet {
     }
     public void setNom(String nom) {  
          this.nom = nom ;  
+    }
+    public void setRoute(Routes route) {   
+         this.adj.add(route); 
     }
 
     public String toString() {

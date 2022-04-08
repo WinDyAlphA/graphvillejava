@@ -79,22 +79,27 @@ public class mainy {
     Routes routes5 = new Routes('A', sommet2, sommet5, 100);
     Routes routes6 = new Routes('A', sommet2, sommet3, 100);
     Routes routes7 = new Routes('A', sommet2, sommet6, 100);
+    Routes routes8 = new Routes('A', sommet4, sommet5, 10);
 
     List < ArrayList < Routes >> listeSom1 = new ArrayList < ArrayList < Routes >> ();
     ArrayList < Routes > list1 = new ArrayList < Routes > ();
-    list1.add(routes1);
-    list1.add(routes2);
-    list1.add(routes3);
+    list1.add(routes1); sommet1.setRoute(routes1);
+    list1.add(routes2); sommet1.setRoute(routes2);
+    list1.add(routes3); sommet1.setRoute(routes3);
     listeSom1.add(list1);
 
     ArrayList < Routes > list2 = new ArrayList < Routes > ();
 
-    list2.add(routes4);
-    list2.add(routes5);
-    list2.add(routes6);
-    list2.add(routes7);
+    list2.add(routes4); sommet2.setRoute(routes4);
+    list2.add(routes5); sommet2.setRoute(routes5);
+    list2.add(routes6); sommet2.setRoute(routes6);
+    list2.add(routes7); sommet2.setRoute(routes7);
     listeSom1.add(list2);
 
+    ArrayList < Routes > list4 = new ArrayList < Routes > ();
+
+    list4.add(routes8); sommet4.setRoute(routes8);
+    listeSom1.add(list4);
     
     int menuOption;
     int ch = 0;
@@ -115,6 +120,7 @@ public class mainy {
       System.out.println("5.qui relie quoi");
       System.out.println("6.2 DISTANCE ?");
       System.out.println("7.Compare");
+      System.out.println("8.test");
       System.out.println("9.Quit");
       menuOption = ent.nextInt();
       ent.nextLine();
@@ -177,11 +183,23 @@ public class mainy {
         System.out.println("entrez le nb du lieu");
         ch = nbch.nextInt();
         nbch.nextLine();
-        System.out.println("entrez le nb du lieu");
-        ch2 = nbch.nextInt();
-        nbch.nextLine();
+        Sommet som = listeSom1.get(ch).get(0).getSom2();
+        for (int i=0; i < som.getRouteSize(); i++){
+          System.out.println("test\n");
+          Sommet active = som.getRoute(i).getSom2();
+          System.out.println(active.getRouteSize()+ "-- + -- " +active.getNom());
+          for (int j=0; j < active.getRouteSize(); j++){
+            System.out.println(j+"--\n");
+            System.out.println(active.getRoute(j).getSom2());
+          }
+          
+        }
         
-        System.out.println(intdist(listeSom1,sommet1,ch));
+
+      break;
+      case 8:
+        test(listeSom1, 1);
+        System.out.println(nbVois(listeSom1, 1));
       break;
 
       }
@@ -223,6 +241,34 @@ public class mainy {
 
 
 
+static void test(List<ArrayList<Routes>> listeSom1, int ch){
+  Sommet x = null;
+  Sommet z = null;
+  for (int i = 0; i < listeSom1.get(ch).size(); i++) {
+      x = listeSom1.get(ch).get(i).getSom1();
+      System.out.println(x.toString());
+        for (int j = 0; j < listeSom1.get(0).size(); j++) {
+          if (listeSom1.get(j).get(0).getSom1() == x){
+            System.out.println("------::------");
+          }
+      
+    }
+
+}
+}
+static int nbVois(List<ArrayList<Routes>> listeSom1, int ch){
+  Sommet x = null;
+  int i = 0;
+  Sommet z = null;
+  for ( i = 0; i < listeSom1.get(ch).size(); i++) {
+      x = listeSom1.get(ch).get(i).getSom1();
+      z = listeSom1.get(ch).get(i).getSom2();
+      
+  
+}
+return i;
+}
+
 
 
 
@@ -261,15 +307,6 @@ public class mainy {
       return true;
     }
   }
-  static int intdist(List<ArrayList<Routes>> listeSom1, Sommet defaut, int ch){
-        Sommet somm = null;
-        for (int j = 0; j < listeSom1.get(ch).size(); j++) {
-          System.out.println(listeSom1.get(ch).get(j).getSom2());
-
-
-        }
-        return 0;
-      }
 
 
 
